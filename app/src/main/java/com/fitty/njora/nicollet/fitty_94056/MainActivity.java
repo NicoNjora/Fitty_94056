@@ -1,11 +1,25 @@
 package com.fitty.njora.nicollet.fitty_94056;
 
+//import android.app.Fragment;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -13,80 +27,110 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.Arrays;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  implements AccountFragment.OnFragmentAccountInteractionListener {
 
-    FirebaseAuth mFirebaseAuth;
-    FirebaseUser mFirebaseUser;
-    private static final int RC_SIGN_IN = 123;
+    private ActionBar toolbar;
 
-    //For demo purpose, I have provided two sample URLs. One for Privacy Policy and another for Terms of Service
-    private static final String PP_URL = "https://iteritory.com/msadrud/install-or-setup-apache-ignite-in-windows-step-by-step-tutorial/";
-    private static final String TOS_URL = "https://iteritory.com/msadrud/install-or-setup-apache-ignite-in-windows-step-by-step-tutorial/";
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        instantiateUser();
+
+
+        toolbar = getSupportActionBar();
+
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        //toolbar.setTitle("Gym");
+//        loadFragment(new AccountFragment());
 
     }
 
-    // Choose authentication providers
-    List<AuthUI.IdpConfig> providers = Arrays.asList(
-            new AuthUI.IdpConfig.EmailBuilder().build(),
-            new AuthUI.IdpConfig.GoogleBuilder().build());
-    
 
 
+
+
+
+
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            Fragment fragment;
+            switch (item.getItemId()) {
+                case R.id.navigation_gym:
+                    toolbar.setTitle("Gym");
+                    return true;
+                case R.id.navigation_activity:
+                    toolbar.setTitle("Activity");
+                    return true;
+                case R.id.navigation_session:
+                    toolbar.setTitle("Session");
+                    return true;
+                case R.id.navigation_account:
+                    toolbar.setTitle("Account");
+                    fragment = new AccountFragment();
+                    loadFragment(fragment);
+                    return true;
+            }
+            return false;
+        }
+    };
+
+    private void loadFragment(Fragment fragment) {
+        // load fragment
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frame_container, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == RC_SIGN_IN) {
-            IdpResponse response = IdpResponse.fromResultIntent(data);
-
-            if (resultCode == RESULT_OK) {
-                // Successfully signed in
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                // ...
-            } else {
-                // Sign in failed. If response is null the user canceled the
-                // sign-in flow using the back button. Otherwise check
-                // response.getError().getErrorCode() and handle the error.
-                // ...
-            }
-        }
-    }
-
-    private void instantiateUser(){
-        mFirebaseAuth = FirebaseAuth.getInstance();
-        mFirebaseUser = mFirebaseAuth.getCurrentUser();
-        if ( mFirebaseUser != null) {
-            // already signed in
-        } else {
-            // not signed in
-
-            // Create and launch sign-in intent
-            startActivityForResult(
-                    AuthUI.getInstance()
-                            .createSignInIntentBuilder()
-                            .setAvailableProviders(providers)
-                            .setTheme(R.style.AuthUITheme)
-                            .setLogo(R.mipmap.ic_account_circle_black_48dp)
-                            .setTosUrl(TOS_URL)
-                            .setPrivacyPolicyUrl(PP_URL)
-                            .setIsSmartLockEnabled(true)
-                            .build(),
-                    RC_SIGN_IN);
-
-
-
-
-        }
+    public void onFragmentInteraction(Uri uri) {
 
 
     }
+
+//    public void openProfile(Uri uri) {
+//        TextView tv = (TextView) findViewById(R.id.profile_view);
+
+//        tv.setOnClickListener(new View.OnClickListener()
+//        {
+
+
+
+    public void openProfile(View v)
+    {
+        //Start your activity here
+        Intent i = new Intent(this, ProfileActivity.class);
+        startActivity(i);
+    }
+
+
+//        });
+
+    public void onLogout(View view) {
+
+
+        AuthUI.getInstance()
+                .signOut(this)
+                //updateUI(null);
+//                .signOut(this)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                        finish();
+
+                    }
+                });
+    }
+
 
 }
+
