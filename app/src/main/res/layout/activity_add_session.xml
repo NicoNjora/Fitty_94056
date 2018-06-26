@@ -8,26 +8,26 @@
     tools:context=".AddSessionActivity">
 
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="5dp">
 
 
         <Button
-            android:id="@+id/button_date"
+            android:id="@+id/session_date_input"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:onClick="showDatePickerDialog"
             android:text="date"/>
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/button_time"
-            android:layout_alignBottom="@id/button_date"
-            android:layout_toRightOf="@id/button_date"
+            android:layout_height="match_parent"
+            android:id="@+id/session_time_input"
             android:onClick="showTimePickerDialog"
             android:text="time"/>
-    </RelativeLayout>
+    </LinearLayout>
 
 
     <LinearLayout
@@ -38,15 +38,51 @@
             android:layout_height="wrap_content"
             android:id="@+id/textView_pickedDate"
             android:text="date"
-            android:layout_marginRight="10dp"/>
+            android:layout_marginLeft="30dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView_pickedTime"
+            android:layout_marginLeft="50dp"
             android:text="time"/>
 
     </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/session_location_label"
+        android:textSize="20sp"
+        android:text="Session Location"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/session_location_input"
+        android:hint="Enter session Location"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/session_trainer_label"
+        android:textSize="20sp"
+        android:text="Trainer"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/session_trainer_input"
+        android:autofillHints="nameoftrainer"
+        android:hint="Enter trainer"/>
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/add_session_btn"
+        android:text="Add Session"
+        android:layout_margin="50dp"/>
 
 
 

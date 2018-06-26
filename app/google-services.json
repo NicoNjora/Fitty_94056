@@ -1,0 +1,59 @@
+{
+  "project_info": {
+    "project_number": "925799040692",
+    "firebase_url": "https://fitty-94056.firebaseio.com",
+    "project_id": "fitty-94056",
+    "storage_bucket": "fitty-94056.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:925799040692:android:7ea3ad5cf960c315",
+        "android_client_info": {
+          "package_name": "com.fitty.njora.nicollet.fitty_94056"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "925799040692-krptig3nhl0om9s19esl0pop71fq32oh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fitty.njora.nicollet.fitty_94056",
+            "certificate_hash": "b66025c08483a4bc2723ed1e23c9786fa3a5b42b"
+          }
+        },
+        {
+          "client_id": "925799040692-fjf83a0rl6vag41cfh3h6s2ts6ot9pav.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "925799040692-fjf83a0rl6vag41cfh3h6s2ts6ot9pav.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDU_dAwDkHAMYUXMlqXr9gy8oZ3Pm28DoQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "925799040692-fjf83a0rl6vag41cfh3h6s2ts6ot9pav.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
