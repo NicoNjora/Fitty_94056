@@ -6,33 +6,34 @@
 
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:onClick="openProfile">
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:id="@+id/profile_image_icon"
+            android:src="@drawable/ic_person_black"/>
         <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            android:onClick="openProfile">
-           <ImageView
-               android:layout_width="48dp"
-               android:layout_height="48dp"
-               android:src="@drawable/ic_person_black"/>
-           <LinearLayout
-               android:layout_width="match_parent"
-               android:layout_height="match_parent"
-               android:orientation="vertical">
-               <TextView
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:text="Profile"/>
-               <TextView
-                   android:layout_width="match_parent"
-                   android:layout_height="match_parent"
-                   android:id="@+id/profile_view"
-                   android:text="Nicollet Njora"
-                   android:clickable="true"
-                   />
-           </LinearLayout>
-       </LinearLayout>
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Profile"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/profile_name_view"
+                android:text=""
+                android:clickable="true"
+                />
+        </LinearLayout>
+    </LinearLayout>
 
     <View
         android:layout_width="match_parent"
@@ -40,21 +41,21 @@
         android:background="@android:color/darker_gray"
         android:layout_margin="25dp"/>
 
-        <LinearLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_settings"/>
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_margin="10dp">
-            <ImageView
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:src="@drawable/ic_settings"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingTop="15dp"
-                android:text="Settings"/>
-        </LinearLayout>
+            android:layout_height="match_parent"
+            android:paddingTop="15dp"
+            android:text="Settings"/>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

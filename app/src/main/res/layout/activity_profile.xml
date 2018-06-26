@@ -18,6 +18,7 @@
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:src="@drawable/ic_person_black"
+            android:id="@+id/imageView_profile_image"
             android:layout_marginLeft="120dp"/>
 
         <LinearLayout
@@ -28,11 +29,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:id="@+id/textView_emaillabel"
                 android:text="Email: "/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="nicollet.njora05@gmail.com"/>
+                android:id="@+id/textView_email"
+                android:text=""/>
         </LinearLayout>
 
         <LinearLayout
@@ -43,11 +46,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:id="@+id/textView_namelabel"
                 android:text="Name: "/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Nicollet Njora"/>
+                android:id="@+id/textView_name"
+                android:text=""/>
         </LinearLayout>
 
     </LinearLayout>
