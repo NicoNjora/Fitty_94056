@@ -56,6 +56,8 @@ public class MainActivity extends AppCompatActivity{
                     return true;
                 case R.id.navigation_activity:
                     toolbar.setTitle("Activity");
+                    fragment = new WorkoutFragment();
+                    loadFragment(fragment);
                     return true;
                 case R.id.navigation_session:
                     toolbar.setTitle("Session");
@@ -86,11 +88,16 @@ public class MainActivity extends AppCompatActivity{
     public void openProfile(View v)
     {
         //Start your activity here
-        Intent i = new Intent(this, ProfileActivity.class);
-        startActivity(i);
+        Intent profile = new Intent(this, ProfileActivity.class);
+        startActivity(profile);
     }
 
-
+    public void openSettings(View view)
+    {
+        //Start your activity here
+        Intent settings = new Intent(this, SettingsActivity.class);
+        startActivity(settings);
+    }
 
 
     public void onLogout(View view) {
@@ -119,8 +126,25 @@ public class MainActivity extends AppCompatActivity{
     }
 
 
+    public void openSupport(View view) {
+        //Start your activity here
+        Intent support = new Intent(this, SupportActivity.class);
+        startActivity(support);
 
+    }
 
+    public void openLegal(View view) {
+        //Start your activity here
+        Intent legal = new Intent(this, LegalActivity.class);
+        startActivity(legal);
 
+    }
+
+    public void addWorkout(View view) {
+        //Start your activity here
+        Intent i = new Intent(this, AddWorkoutActivity.class);
+        startActivity(i);
+
+    }
 }
 

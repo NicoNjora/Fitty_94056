@@ -1,33 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SessionFragment">
+    tools:context=".WorkoutFragment">
+
+    <include layout="@layout/fab_add_workout"/>
 
 
-    <include layout="@layout/fab_add_session"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            android:text="Past Sessions"
-            android:textColor="#111"
-            android:textSize="16dp" />
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Choose Workout"
+                android:paddingTop="10dp"/>
+
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/sessions_recycler_view"
+            android:id="@+id/workouts_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clipToPadding="false"
             android:scrollbars="vertical" />
-
-
     </LinearLayout>
 
 </FrameLayout>

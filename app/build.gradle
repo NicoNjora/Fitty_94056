@@ -42,5 +42,13 @@ dependencies {
     // glide image library
     implementation 'com.github.bumptech.glide:glide:4.3.1'
 
+    // Retrofit & OkHttp
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+
+    // volley http library
+    implementation 'com.android.volley:volley:1.0.0'
+    implementation 'com.google.code.gson:gson:2.6.2'
+
 }
 apply plugin: 'com.google.gms.google-services'

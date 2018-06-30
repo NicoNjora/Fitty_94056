@@ -13,21 +13,21 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/session_date"
+            android:id="@+id/workout_type"
             android:padding="5dp"
-            android:text="Session Date"/>
+            android:text="Workout Type"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/session_time"
+            android:id="@+id/workout_exercise"
             android:padding="5dp"
-            android:text="Session Time"/>
+            android:text="Workout Exercise"/>
     </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/session_gym"
+        android:id="@+id/workout_sets"
         android:padding="5dp"
         android:text="Session Gym"/>
 
@@ -35,6 +35,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
-        android:id="@+id/session_trainer"
+        android:id="@+id/workout_reps"
         android:text="Trainer"/>
 </LinearLayout>

@@ -12,6 +12,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -70,6 +71,8 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
 
         // create marker
         MarkerOptions marker = new MarkerOptions().position(new LatLng(latitude, longitude)).title("Gym Location ");
+
+        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_nav));
         googleMap.addMarker(marker);
 
         CameraPosition cameraPosition = new CameraPosition.Builder().target(
@@ -81,7 +84,9 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
 
         // Add a marker in Sydney and move the camera
         LatLng trm = new LatLng(1.2108, 36.7950);
-        googleMap.addMarker(new MarkerOptions().position(trm).title("Marker in Two Rivers"));
+        googleMap.addMarker(new MarkerOptions().position(trm)
+                .title("Marker in Two Rivers")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.map_nav)));
 //        googleMap.moveCamera(CameraUpdateFactory.newLatLng(trm));
     }
 

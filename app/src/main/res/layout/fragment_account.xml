@@ -29,9 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/profile_name_view"
-                android:text=""
-                android:clickable="true"
-                />
+                android:text="" />
         </LinearLayout>
     </LinearLayout>
 
@@ -45,7 +43,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_margin="10dp">
+        android:layout_margin="10dp"
+        android:clickable="true"
+        android:onClick="openSettings">
         <ImageView
             android:layout_width="48dp"
             android:layout_height="48dp"
@@ -61,7 +61,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_margin="10dp">
+        android:layout_margin="10dp"
+        android:onClick="openSupport">
         <ImageView
             android:layout_width="48dp"
             android:layout_height="48dp"
@@ -81,7 +82,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_margin="10dp">
+        android:layout_margin="10dp"
+        android:onClick="openLegal">
         <ImageView
             android:layout_width="48dp"
             android:layout_height="48dp"

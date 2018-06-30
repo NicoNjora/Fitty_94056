@@ -8,15 +8,27 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.android.volley.VolleyLog.TAG;
 
 
 public class SessionFragment extends Fragment {
@@ -25,6 +37,9 @@ public class SessionFragment extends Fragment {
     private RecyclerView recyclerView;
     private List<Session> sessionList;
     private SessionAdapter mAdapter;
+
+    private static final String TAG = SessionFragment.class.getSimpleName();
+    private static final String URL = "https://fittyapi.herokuapp.com/api/session";
 
 
     public SessionFragment() {
@@ -46,7 +61,7 @@ public class SessionFragment extends Fragment {
 //        return inflater.inflate(R.layout.fragment_session, container, false);
         View view = inflater.inflate(R.layout.fragment_session, container, false);
 
-        recyclerView = view.findViewById(R.id.recycler_view);
+        recyclerView = view.findViewById(R.id.sessions_recycler_view);
         sessionList = new ArrayList<>();
         mAdapter = new SessionAdapter(getActivity(), sessionList);
 
@@ -57,13 +72,44 @@ public class SessionFragment extends Fragment {
         recyclerView.setAdapter(mAdapter);
         recyclerView.setNestedScrollingEnabled(false);
 
-
+        fetchSessions();
         return view;
 
     }
 
 
+    private void fetchSessions() {
 
+
+        JsonArrayRequest request = new JsonArrayRequest(URL,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        if (response == null) {
+                            Toast.makeText(getActivity(), "Couldn't fetch the sessions Please try again.", Toast.LENGTH_LONG).show();
+                            return;
+                        }
+
+                        List<Session> items = new Gson().fromJson(response.toString(), new TypeToken<List<Session>>() {
+                        }.getType());
+
+                        sessionList.clear();
+                        sessionList.addAll(items);
+
+                        // refreshing recycler view
+                        mAdapter.notifyDataSetChanged();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // error in getting json
+                Log.e(TAG, "Error: " + error.getMessage());
+                Toast.makeText(getActivity(), "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        GymApplication.getInstance().addToRequestQueue(request);
+    }
 
 
     public class GridSpacingItemDecoration extends RecyclerView.ItemDecoration {
