@@ -10,11 +10,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
+import com.fitty.njora.nicollet.fitty_94056.Fragments.AccountFragment;
+import com.fitty.njora.nicollet.fitty_94056.Fragments.MapsFragment;
+import com.fitty.njora.nicollet.fitty_94056.Fragments.SessionFragment;
+import com.fitty.njora.nicollet.fitty_94056.Fragments.WorkoutFragment;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 

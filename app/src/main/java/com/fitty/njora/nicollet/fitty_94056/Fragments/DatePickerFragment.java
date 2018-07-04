@@ -1,4 +1,4 @@
-package com.fitty.njora.nicollet.fitty_94056;
+package com.fitty.njora.nicollet.fitty_94056.Fragments;
 
 
 
@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.TextView;
+
+import com.fitty.njora.nicollet.fitty_94056.AddSessionActivity;
 
 import java.util.Calendar;
 

@@ -1,4 +1,4 @@
-package com.fitty.njora.nicollet.fitty_94056;
+package com.fitty.njora.nicollet.fitty_94056.Adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -6,6 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.fitty.njora.nicollet.fitty_94056.Model.Workout;
+import com.fitty.njora.nicollet.fitty_94056.R;
 
 import java.util.List;
 

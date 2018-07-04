@@ -1,4 +1,4 @@
-package com.fitty.njora.nicollet.fitty_94056;
+package com.fitty.njora.nicollet.fitty_94056.Fragments;
 
 
 import android.os.Bundle;
@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.fitty.njora.nicollet.fitty_94056.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 

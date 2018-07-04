@@ -1,4 +1,4 @@
-package com.fitty.njora.nicollet.fitty_94056;
+package com.fitty.njora.nicollet.fitty_94056.Fragments;
 
 
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.fitty.njora.nicollet.fitty_94056.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;

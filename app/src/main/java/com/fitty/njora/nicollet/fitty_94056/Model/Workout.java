@@ -1,4 +1,4 @@
-package com.fitty.njora.nicollet.fitty_94056;
+package com.fitty.njora.nicollet.fitty_94056.Model;
 
 public class Workout {
 

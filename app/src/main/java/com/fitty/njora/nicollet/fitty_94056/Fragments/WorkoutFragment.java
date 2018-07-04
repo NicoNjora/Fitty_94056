@@ -1,4 +1,4 @@
-package com.fitty.njora.nicollet.fitty_94056;
+package com.fitty.njora.nicollet.fitty_94056.Fragments;
 
 
 import android.content.res.Resources;
@@ -12,6 +12,10 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.fitty.njora.nicollet.fitty_94056.Adapters.WorkoutAdapter;
+import com.fitty.njora.nicollet.fitty_94056.Model.Workout;
+import com.fitty.njora.nicollet.fitty_94056.R;
 
 import java.util.ArrayList;
 import java.util.List;
