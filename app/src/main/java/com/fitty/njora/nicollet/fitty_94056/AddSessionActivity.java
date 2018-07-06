@@ -28,6 +28,8 @@ import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AddSessionActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -55,13 +57,15 @@ public class AddSessionActivity extends AppCompatActivity implements AdapterView
         //Initializing the ArrayList
         gymDetails= new ArrayList<String>();
 
+        // Create the spinner.
+        spinner = (Spinner) findViewById(R.id.gym_spinner);
+
         date_view = (TextView) findViewById(R.id.textView_pickedDate);
         trainer_picked = (EditText) findViewById(R.id.picked_Trainer);
         sets_no = (EditText) findViewById(R.id.EtSets_no);
         reps_no = (EditText) findViewById(R.id.EtReps_no);
 
-        // Create the spinner.
-        spinner = (Spinner) findViewById(R.id.gym_spinner);
+
 
         //This method will fetch the data from the URL
         getData();
@@ -195,51 +199,47 @@ public class AddSessionActivity extends AppCompatActivity implements AdapterView
 
             final String requestBody = jsonBody.toString();
 
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-                    Log.i("VOLLEY", response);
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Log.e("VOLLEY", error.toString());
-                }
-            }) {
-                @Override
-                public String getBodyContentType() {
-                    return "application/json; charset=utf-8";
-                }
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>()
+                    {
+                        @Override
+                        public void onResponse(String response) {
+                            Log.i("VOLLEY", response);
+                        }
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Log.e("VOLLEY", error.toString());
+                        }
+                    })
 
-                @Override
-                public byte[] getBody() throws AuthFailureError {
-                    try {
-                        return requestBody == null ? null : requestBody.getBytes("utf-8");
-                    } catch (UnsupportedEncodingException uee) {
-                        VolleyLog.wtf("Unsupported Encoding while trying to get the bytes of %s using %s", requestBody, "utf-8");
-                        return null;
-                    }
-                }
+            {
+                protected Map<String, String> getParams() {
+                    Map<String, String> MyData = new HashMap<String, String>();
+                    MyData.put("Field", "Value"); //Add the data you'd like to send to the server.
+                    MyData.put("date", dateMessage);
 
-                @Override
-                protected Response<String> parseNetworkResponse(NetworkResponse response) {
-                    String responseString = "";
-                    if (response != null) {
-                        responseString = String.valueOf(response.statusCode);
-                        // can get more details such as response.headers
-                    }
-                    return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));
+                    MyData.put("gym_id", "1");
+                    MyData.put("exercise_type", "Chest");
+
+
+                    MyData.put("reps_no", reps_no.getText().toString());
+                    MyData.put("sets_no", sets_no.getText().toString());
+                    MyData.put("user_id", "1");
+                    MyData.put("trainer_id", "1");
+                    return MyData;
                 }
             };
 
-            requestQueue.add(stringRequest);
-        } catch(
-        JSONException e)
 
-        {
-            e.printStackTrace();
+//                requestQueue.add(stringRequest);
+            GymApplication.getInstance().addToRequestQueue(stringRequest);
+            } catch(
+            JSONException e)
+
+            {
+                e.printStackTrace();
+            }
         }
-    }
 
 
 }

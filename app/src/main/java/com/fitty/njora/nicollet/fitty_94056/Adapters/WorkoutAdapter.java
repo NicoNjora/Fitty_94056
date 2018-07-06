@@ -18,10 +18,10 @@ public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.MyViewHo
         private List<Workout> workoutList;
 
         public class MyViewHolder extends RecyclerView.ViewHolder {
-            public TextView type, reps, sets;
+            private TextView type, reps, sets;
 
 
-            public MyViewHolder(View view) {
+            private MyViewHolder(View view) {
                 super(view);
                 type = view.findViewById(R.id.workout_type);
                 reps= view.findViewById(R.id.workout_exercise);
@@ -37,7 +37,7 @@ public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.MyViewHo
         }
 
         @Override
-        public WorkoutAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public WorkoutAdapter.MyViewHolder  onCreateViewHolder(ViewGroup parent, int viewType) {
             View itemView = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.workout_item, parent, false);
 
@@ -45,7 +45,7 @@ public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.MyViewHo
         }
 
 
-    @Override
+        @Override
         public void onBindViewHolder(WorkoutAdapter.MyViewHolder holder, final int position) {
             final Workout workout= workoutList.get(position);
             holder.type.setText(workout.getType());
