@@ -5,4 +5,5 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="bgBottomNavigation">#fe485a</color>
+    <color name="trainer_title">#4c4c4c</color>
 </resources>

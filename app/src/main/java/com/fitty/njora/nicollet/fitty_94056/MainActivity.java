@@ -15,7 +15,7 @@ import com.firebase.ui.auth.AuthUI;
 import com.fitty.njora.nicollet.fitty_94056.Fragments.AccountFragment;
 import com.fitty.njora.nicollet.fitty_94056.Fragments.MapsFragment;
 import com.fitty.njora.nicollet.fitty_94056.Fragments.SessionFragment;
-import com.fitty.njora.nicollet.fitty_94056.Fragments.WorkoutFragment;
+import com.fitty.njora.nicollet.fitty_94056.Fragments.TrainerFragment;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -57,8 +57,8 @@ public class MainActivity extends AppCompatActivity{
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_activity:
-                    toolbar.setTitle("Activity");
-                    fragment = new WorkoutFragment();
+                    toolbar.setTitle("Trainers");
+                    fragment = new TrainerFragment();
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_session:
@@ -142,11 +142,6 @@ public class MainActivity extends AppCompatActivity{
 
     }
 
-    public void addWorkout(View view) {
-        //Start your activity here
-        Intent i = new Intent(this, AddWorkoutActivity.class);
-        startActivity(i);
 
-    }
 }
 

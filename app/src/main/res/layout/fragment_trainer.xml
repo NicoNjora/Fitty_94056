@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.WorkoutFragment">
-
-    <include layout="@layout/fab_add_workout"/>
+    tools:context=".Fragments.TrainerFragment">
 
 
         <LinearLayout
@@ -17,12 +15,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="Choose Workout"
+                android:text="Trainers"
                 android:paddingTop="10dp"/>
 
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/workouts_recycler_view"
+            android:id="@+id/trainer_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clipToPadding="false"
