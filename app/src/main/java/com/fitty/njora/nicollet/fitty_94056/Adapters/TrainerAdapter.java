@@ -55,10 +55,12 @@ public class TrainerAdapter extends RecyclerView.Adapter<TrainerAdapter.MyViewHo
         Trainer trainer = trainerList.get(position);
         holder.name.setText(trainer.getName());
         holder.contacts.setText((String.valueOf(trainer.getContacts())));
-
+        String photo_url = trainer.getPhoto();
 
         // loading album cover using Glide library
-        Glide.with(mContext).load(trainer.getPhoto()).into(holder.photo);
+        Glide.with(mContext)
+                .load(photo_url)
+                .into(holder.photo);
 
         holder.overflow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,7 +94,7 @@ public class TrainerAdapter extends RecyclerView.Adapter<TrainerAdapter.MyViewHo
         public boolean onMenuItemClick(MenuItem menuItem) {
             switch (menuItem.getItemId()) {
                 case R.id.action_contact:
-                    Toast.makeText(mContext, "Conatct", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, "Contact", Toast.LENGTH_SHORT).show();
                     return true;
                 case R.id.action_rate:
                     Toast.makeText(mContext, "Rate", Toast.LENGTH_SHORT).show();

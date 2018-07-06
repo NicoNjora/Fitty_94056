@@ -5,6 +5,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
@@ -17,9 +18,12 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.fitty.njora.nicollet.fitty_94056.R;
@@ -35,6 +39,7 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.Circle;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.squareup.okhttp.OkHttpClient;
 
@@ -222,11 +227,44 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Locati
                         String close_hrs =jsonObject.getString("closing_hrs");
 
                         LatLng gymloc = new LatLng(y, x);
-                        googleMap.addMarker(new MarkerOptions().
-                                position(gymloc).
-                                title(loc_name).
-                                icon(BitmapDescriptorFactory.fromResource(R.drawable.icons8)));
+                        googleMap.addMarker(new MarkerOptions()
+                                .position(gymloc)
+                                .title(loc_name)
+                                .snippet("Opening Hrs:"+open_hrs+"\n"+"Closing Time:"+close_hrs)
+                                .icon(BitmapDescriptorFactory.fromResource(R.drawable.icons8)));
                         googleMap.moveCamera(CameraUpdateFactory.newLatLng(gymloc));
+
+                        googleMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
+
+                            @Override
+                            public View getInfoWindow(Marker arg0) {
+                                return null;
+                            }
+
+                            @Override
+                            public View getInfoContents(Marker marker) {
+
+                                Context mContext = getActivity();
+
+                                LinearLayout info = new LinearLayout(mContext);
+                                info.setOrientation(LinearLayout.VERTICAL);
+
+                                TextView title = new TextView(mContext);
+                                title.setTextColor(Color.BLACK);
+                                title.setGravity(Gravity.CENTER);
+                                title.setTypeface(null, Typeface.BOLD);
+                                title.setText(marker.getTitle());
+
+                                TextView snippet = new TextView(mContext);
+                                snippet.setTextColor(Color.GRAY);
+                                snippet.setText(marker.getSnippet());
+
+                                info.addView(title);
+                                info.addView(snippet);
+
+                                return info;
+                            }
+                        });
 
                     } catch (JSONException e) {
                         e.printStackTrace();

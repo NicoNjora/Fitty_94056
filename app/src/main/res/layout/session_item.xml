@@ -33,18 +33,21 @@
             android:layout_height="wrap_content"
             android:id="@+id/session_gym"
             android:padding="5dp"
+            android:visibility="gone"
             android:text="Session Gym"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:paddingLeft="10dp"
+            android:visibility="gone"
             android:text="Trainer :"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="5dp"
+            android:visibility="gone"
             android:id="@+id/session_trainer"/>
 
     </LinearLayout>
